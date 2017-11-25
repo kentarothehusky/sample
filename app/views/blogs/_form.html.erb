@@ -1,12 +1,11 @@
-<%= form_with(@blog, url: choose_new_or_edit) do |f| %>
+<%= form_with(model: @blog, url: confirm_blogs_path, local: true) do |form| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
       <ul>
-zs
-      <% @blog.errors.full_messages.each do |msg| %>
+        <% @blog.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
