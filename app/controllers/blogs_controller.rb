@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
   end
   
   def new
+    
     if params[:back]
       @blog = Blog.new(blogs_params)
     else
@@ -14,7 +15,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    @blog = Blog.new(blogs_params)
     if @blog.save
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       redirect_to blogs_path, notice: "ブログを作成しました！"
@@ -44,7 +45,7 @@ class BlogsController < ApplicationController
   
   def update
     @blog = Blog.find(params[:id])
-    if @blog.update(blog_params)
+    if @blog.update(blogs_params)
       redirect_to blogs_path, notice: "ブログを編集しました！"
     else
       render 'edit'
@@ -52,7 +53,7 @@ class BlogsController < ApplicationController
   end
 
   private
-  def blog_params
+  def blogs_params
     params.require(:blog).permit(:title, :content)
   end
   
